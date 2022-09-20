@@ -1,28 +1,37 @@
 package hh.Bookstore.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Book {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long id;
 	private String title;
 	private String author;
+	@Column(name= "Publishing_year")
 	private int year;
-	private int isbn;
+	private String isbn;
 	private double price;
 	
-	public Book() {
-		this.title = null;
-		this.author = null;
-		this.year = 0;
-		this.isbn = 0;
-		this.price = 0;
-		
-	}
+	public Book() {}
 	
-	public Book(String title, String author, int year, int isbn, double price) {
+	public Book(String title, String author, int year, String isbn, double price) {
+		super();
 		this.title = title;
 		this.author = author;
 		this.year = year;
 		this.isbn = isbn;
 		this.price = price;
 		
+	}
+	
+	public long getId() {
+		return id;
 	}
 	
 	public String getTitle() {
@@ -37,12 +46,16 @@ public class Book {
 		return year;
 	}
 	
-	public int getIsbn() {
+	public String getIsbn() {
 		return isbn;
 	}
 	
 	public double getPrice() {
 		return price;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	public void setTitle(String title) {
@@ -57,7 +70,7 @@ public class Book {
 		this.year = year;
 	}
 	
-	public void setIsbn(int isbn) {
+	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
 	
@@ -67,7 +80,7 @@ public class Book {
 	
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author +",year=" + year + ", isbn=" + isbn + ", price" + price + "]";
+		return "Book [id=" + id + ", title=" + title + ", author=" + author +",year=" + year + ", isbn=" + isbn + ", price" + price + "]";
 	}
 	
 	
