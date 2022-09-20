@@ -7,16 +7,20 @@
 <body>
 	<h1>Books</h1>
 	<table>
-		<h2>author title isbn year</h2>
-		<tbody>
-			<tr th:each = "book : ${books}">
-				<td th:text="${book.author}"></td>
-				<td th:text="${book.title}"></td>
-				<td th:text="${book.isbn}"></td>
-				<td th:text="${book.year}"></td>
-		
-			</tr>
-		</tbody>	
+		<tr>
+		    <th>author</th>
+		    <th>title</th>
+		    <th>isbn</th>
+		    <th>year</th>
+		</tr>  
+		<tr th:each = "book : ${books}">
+			<td th:text="${book.author}"></td>
+			<td th:text="${book.title}"></td>
+			<td th:text="${book.isbn}"></td>
+			<td th:text="${book.year}"></td>
+			<td><a th:href="@{/delete/{id}(id=${book.id})}">Delete</a></td>
+		</tr>
 	</table>
+	<a href="/add">Add Book</a>
 </body>
 </html>

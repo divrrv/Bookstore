@@ -1,5 +1,8 @@
 package hh.Bookstore;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,6 +13,8 @@ import hh.Bookstore.domain.BookRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
+	private static final Logger log = LoggerFactory.getLogger(BookstoreApplication.class);
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
@@ -18,11 +23,15 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner demo(BookRepository repository) {
 		return (args) -> {
-			Book b1 = new Book("Joulu", "Louis D", 1996, "121223", 12.30);
-			Book b2 = new Book("Kesä", "Sini H", 1998, "131321", 12.30);
+			log.info("Testi kirjat");
+			repository.save( new Book("Joulu", "Louis D", 1996, "121223", 12.30));
+			repository.save( new Book("Kesä", "Sini H", 1998, "131321", 12.30));
 			
-			repository.save(b1);
-			repository.save(b2);
+			log.info("fetch all books");
+			for (Book book : repository.findAll()) {
+				log.info(book.toString());
+			}
+				
 		};
 	}
 
