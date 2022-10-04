@@ -33,8 +33,8 @@ public class BookstoreApplication {
 			Category category3 = new Category("novel");
 			crepository.save(category3);
 			
-			brepository.save( new Book("Joulu", "Louis D", 1996, "121223", 12.30));
-			brepository.save( new Book("Kesä", "Sini H", 1998, "131321", 12.30));
+			brepository.save( new Book("Joulu", "Louis D", 1996, "121223", 12.30, category3));
+			brepository.save( new Book("Kesä", "Sini H", 1998, "131321", 12.30, category3));
 			
 			log.info("fetch all books");
 			for (Book book : brepository.findAll()) {

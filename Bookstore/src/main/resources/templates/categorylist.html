@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org">
 <head>
-	<title>Categorylist</title>
+	<title>Category list</title>
 	<meta htp-equiv="Content-Type" contect="text/html" charset="UTF-8">
 </head>
 <body>
-	<h1>Categorys</h1>
+	<h1>Categories</h1>
 	<table>  
 		<tr th:each = "category : ${categorys}">
 			<td th:text="${category.categoryid}"></td>
